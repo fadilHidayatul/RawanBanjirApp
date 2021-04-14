@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Informasi.DetailInformasiActivity"></activity>
+        <activity android:name=".Bantuan.BantuanActivity"></activity>
+        <activity android:name=".Informasi.DetailInformasiActivity" />
         <activity android:name=".Informasi.InformasiActivity" />
         <activity android:name=".Daerah.KelurahanActivity" />
         <activity android:name=".Daerah.KecamatanActivity" />
