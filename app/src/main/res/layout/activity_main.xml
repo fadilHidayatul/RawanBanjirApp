@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="3"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:id="@+id/l_atas"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2">
+        <pl.droidsonroids.gif.GifImageView
+            android:src="@drawable/lottie_home"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="-60dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        <LinearLayout
+            android:layout_centerInParent="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:text="Aplikasi\nDaerah Rawan Banjir"
+                android:gravity="center"
+                android:fontFamily="@font/nunito_bold"
+                android:textSize="26sp"
+                android:textColor="@color/dark_blue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:text="Kota Padang"
+                android:gravity="center"
+                android:fontFamily="@font/nunito_bold"
+                android:textSize="24sp"
+                android:textColor="@color/pink"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/l_bawah"
+        android:background="@drawable/ic_back_radius_up"
+        android:layout_marginTop="-50dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_marginVertical="20dp"
+                android:paddingHorizontal="10dp"
+                android:weightSum="2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <RelativeLayout
+                    android:id="@+id/menu_1"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="8dp"
+                    android:paddingStart="12dp"
+                    android:paddingTop="18dp"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/ic_card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/img_menu1"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginBottom="10dp"
+                        android:src="@drawable/i_daerah" />
+
+                    <TextView
+                        android:id="@+id/title_menu1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito_bold"
+                        android:layout_below="@id/img_menu1"
+                        android:text="Daerah"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/desc_menu1"
+                        android:text="lihat daftar daerah"
+                        android:fontFamily="@font/nunito"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:layout_marginTop="-4dp"
+                        android:layout_below="@id/title_menu1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/menu_2"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="8dp"
+                    android:gravity="center_vertical"
+                    android:paddingTop="18dp"
+                    android:paddingStart="12dp"
+                    android:background="@drawable/ic_card"
+                    android:backgroundTint="@color/dark_blue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/img_menu2"
+                        android:src="@drawable/i_peta"
+                        android:scaleType="fitXY"
+                        android:adjustViewBounds="true"
+                        android:layout_marginBottom="8dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"/>
+
+                    <TextView
+                        android:id="@+id/title_menu2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito_bold"
+                        android:layout_below="@id/img_menu2"
+                        android:text="Peta"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/desc_menu2"
+                        android:text="untuk melihat lokasi"
+                        android:fontFamily="@font/nunito"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:layout_marginTop="-4dp"
+                        android:layout_below="@id/title_menu2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </RelativeLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_marginVertical="20dp"
+                android:paddingHorizontal="10dp"
+                android:weightSum="2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <RelativeLayout
+                    android:id="@+id/menu_3"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="8dp"
+                    android:paddingStart="12dp"
+                    android:paddingTop="18dp"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/ic_card"
+                    android:backgroundTint="@color/dark_blue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/img_menu3"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginBottom="10dp"
+                        android:src="@drawable/i_informasi" />
+
+                    <TextView
+                        android:id="@+id/title_menu3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito_bold"
+                        android:layout_below="@id/img_menu3"
+                        android:text="Informasi"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/desc_menu3"
+                        android:text="lihat info tersedia"
+                        android:fontFamily="@font/nunito"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:layout_marginTop="-4dp"
+                        android:layout_below="@id/title_menu3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/menu_4"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="8dp"
+                    android:gravity="center_vertical"
+                    android:paddingTop="18dp"
+                    android:paddingStart="12dp"
+                    android:background="@drawable/ic_card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/img_menu4"
+                        android:src="@drawable/i_about"
+                        android:scaleType="fitXY"
+                        android:adjustViewBounds="true"
+                        android:layout_marginBottom="8dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"/>
+
+                    <TextView
+                        android:id="@+id/title_menu4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito_bold"
+                        android:layout_below="@id/img_menu4"
+                        android:text="About"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/desc_menu4"
+                        android:text="tentang aplikasi ini"
+                        android:fontFamily="@font/nunito"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:layout_marginTop="-4dp"
+                        android:layout_below="@id/title_menu4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_marginVertical="20dp"
+                android:paddingHorizontal="10dp"
+                android:weightSum="2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <RelativeLayout
+                    android:id="@+id/menu_5"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="8dp"
+                    android:paddingStart="12dp"
+                    android:paddingTop="18dp"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/ic_card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/img_menu5"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginBottom="10dp"
+                        android:src="@drawable/i_bantuan" />
+
+                    <TextView
+                        android:id="@+id/title_menu5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito_bold"
+                        android:layout_below="@id/img_menu5"
+                        android:text="Bantuan"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/desc_menu5"
+                        android:text="cara penggunaan"
+                        android:fontFamily="@font/nunito"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:layout_marginTop="-4dp"
+                        android:layout_below="@id/title_menu5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/menu_6"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="8dp"
+                    android:gravity="center_vertical"
+                    android:paddingTop="18dp"
+                    android:paddingStart="12dp"
+                    android:background="@drawable/ic_card"
+                    android:backgroundTint="@color/dark_blue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/img_menu6"
+                        android:src="@drawable/i_keluar"
+                        android:scaleType="fitXY"
+                        android:adjustViewBounds="true"
+                        android:layout_marginBottom="8dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"/>
+
+                    <TextView
+                        android:id="@+id/title_menu6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito_bold"
+                        android:layout_below="@id/img_menu6"
+                        android:text="Keluar"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/desc_menu6"
+                        android:text="dari aplikasi"
+                        android:fontFamily="@font/nunito"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:layout_marginTop="-4dp"
+                        android:layout_below="@id/title_menu6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".Intro.SplashScreenActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/gif"
+        android:layout_marginBottom="44dp"
+        android:fontFamily="@font/nunito_bold"
+        android:gravity="center"
+        android:text="Banjir App"
+        android:textColor="@color/dark_blue"
+        android:textSize="36sp"
+        android:textStyle="bold" />
+    
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/gif"
+        android:src="@drawable/lottie_splash"
+        android:layout_centerInParent="true"
+        android:layout_width="220dp"
+        android:layout_height="220dp"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="150dp"
+        android:layout_height="4dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="8dp"
+        app:cardCornerRadius="2dp"
+        android:elevation="0dp"
+        android:backgroundTint="@color/black1"/>
+
+</RelativeLayout>
