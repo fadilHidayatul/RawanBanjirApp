@@ -7,6 +7,7 @@
     <color name="black1">#0f0f0f</color>
     <color name="white">#ffffff</color>
     <color name="white1">#f0f0f0</color>
+    <color name="blurwhite">#80ffffff</color>
     <color name="blue">#177FBF</color>
     <color name="dark_blue">#23468C</color>
     <color name="pink">#D9073F</color>

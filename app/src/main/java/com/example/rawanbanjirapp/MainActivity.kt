@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import com.example.rawanbanjirapp.About.AboutActivity
+import com.example.rawanbanjirapp.Bantuan.BantuanActivity
 import com.example.rawanbanjirapp.Daerah.KecamatanActivity
 import com.example.rawanbanjirapp.Informasi.InformasiActivity
 import com.example.rawanbanjirapp.databinding.ActivityMainBinding
@@ -34,7 +35,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, AboutActivity::class.java))
         }
         binding.menu5.setOnClickListener {
-            Toast.makeText(this,"Bantuan",Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, BantuanActivity::class.java))
         }
         binding.menu6.setOnClickListener {
             finish()
