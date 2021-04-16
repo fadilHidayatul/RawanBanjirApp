@@ -35,10 +35,25 @@ class KecamatanActivity : AppCompatActivity() {
 
     }
 
+    private fun show(){
+        binding.layoutIsiKecamatan.visibility = View.VISIBLE
+        binding.loading.visibility = View.GONE
+    }
+    private fun load(){
+        binding.layoutIsiKecamatan.visibility = View.GONE
+        binding.loading.visibility = View.VISIBLE
+    }
+    private fun done(){
+        binding.layoutIsiKecamatan.visibility = View.GONE
+        binding.loading.visibility = View.GONE
+    }
+
     private fun getDataKecamatan() {
+        load()
         ApiClient.getClient.getKecamatan().enqueue(object : Callback<ResponseBody>{
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                 if (response.isSuccessful){
+                    show()
                     val jsonO = JSONObject(response.body()!!.string())
                     if (jsonO.getString("status") == "200"){
                         val jsonA = jsonO.getJSONArray("DATA")
@@ -57,14 +72,17 @@ class KecamatanActivity : AppCompatActivity() {
                         binding.recyclerKecamatan.setHasFixedSize(true)
 
                     }else{
+                        done()
                         Toast.makeText(context, jsonO.getString("status"), Toast.LENGTH_SHORT).show()
                     }
                 }else{
+                    done()
                     Toast.makeText(context,"Respon Failure", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                done()
                 Toast.makeText(context,"Cek Koneksi Internet", Toast.LENGTH_SHORT).show()
             }
 

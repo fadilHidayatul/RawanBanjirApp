@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,6 +9,7 @@
     tools:context=".Daerah.KelurahanActivity">
 
     <RelativeLayout
+        android:id="@+id/bar_kelurahan"
         android:layout_marginTop="9dp"
         android:layout_marginHorizontal="12dp"
         android:layout_width="match_parent"
@@ -33,28 +34,43 @@
             android:layout_height="match_parent"/>
     </RelativeLayout>
 
-    <TextView
-        android:text="List Kelurahan"
-        android:layout_marginHorizontal="30dp"
-        android:fontFamily="@font/nunito_bold"
-        android:textColor="@color/black1"
-        android:textSize="22sp"
-        android:layout_marginVertical="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <androidx.cardview.widget.CardView
-        android:layout_margin="20dp"
-        app:cardCornerRadius="4dp"
+    <LinearLayout
+        android:id="@+id/layout_isi_kelurahan"
+        android:visibility="visible"
+        android:layout_below="@id/bar_kelurahan"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerKelurahan"
-            tools:listitem="@layout/row_kelurahan"
+        android:layout_height="match_parent">
+        <TextView
+            android:text="List Kelurahan"
+            android:layout_marginHorizontal="30dp"
+            android:fontFamily="@font/nunito_bold"
+            android:textColor="@color/black1"
+            android:textSize="22sp"
             android:layout_marginVertical="10dp"
-            android:paddingBottom="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-    </androidx.cardview.widget.CardView>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
-</LinearLayout>
+        <androidx.cardview.widget.CardView
+            android:layout_margin="20dp"
+            app:cardCornerRadius="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerKelurahan"
+                tools:listitem="@layout/row_kelurahan"
+                android:layout_marginVertical="10dp"
+                android:paddingBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/loading"
+        android:visibility="gone"
+        android:src="@drawable/lottie_loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</RelativeLayout>

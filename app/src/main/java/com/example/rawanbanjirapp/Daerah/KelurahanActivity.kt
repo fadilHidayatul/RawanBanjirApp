@@ -40,12 +40,27 @@ class KelurahanActivity : AppCompatActivity() {
         getDataKelurahan(idKecamatan)
     }
 
+    private fun show(){
+        binding.layoutIsiKelurahan.visibility = View.VISIBLE
+        binding.loading.visibility = View.GONE
+    }
+    private fun load(){
+        binding.layoutIsiKelurahan.visibility = View.GONE
+        binding.loading.visibility = View.VISIBLE
+    }
+    private fun done(){
+        binding.layoutIsiKelurahan.visibility = View.GONE
+        binding.loading.visibility = View.GONE
+    }
+
     private fun getDataKelurahan(idKecamatan: String) {
+        load()
         ApiClient.getClient.getKelurahan(idKecamatan).enqueue(object : Callback<ResponseBody>{
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                 if (response.isSuccessful){
                     val jsonO = JSONObject(response.body()!!.string())
                     if (jsonO.getString("status") == "200"){
+                        show()
                         val jsonA = jsonO.getJSONArray("DATA")
 
                         databean = ArrayList()
@@ -61,14 +76,17 @@ class KelurahanActivity : AppCompatActivity() {
                         binding.recyclerKelurahan.setHasFixedSize(true)
 
                     }else{
+                        done()
                         Toast.makeText(context,jsonO.getString("message"), Toast.LENGTH_SHORT).show()
                     }
                 }else{
+                    done()
                     Toast.makeText(context,"Respon Failure", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                done()
                 Toast.makeText(context,"Cek Koneksi Internet", Toast.LENGTH_SHORT).show()
             }
 

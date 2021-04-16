@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import com.example.rawanbanjirapp.UtilsApi.ApiClient
 import com.example.rawanbanjirapp.databinding.ActivityDetailDaerahBinding
@@ -32,14 +33,24 @@ class DetailDaerahActivity : AppCompatActivity() {
         idkec = intent.getStringExtra("idkec")!!
         idkel = intent.getStringExtra("idkel")!!
 
-        Toast.makeText(context,"$idkec & $idkel", Toast.LENGTH_SHORT).show()
         getDataDaerah(idkec,idkel)
     }
 
+    private fun show(){
+        binding.layoutIsi.visibility = View.VISIBLE
+        binding.loading.visibility = View.GONE
+    }
+    private fun load(){
+        binding.layoutIsi.visibility = View.GONE
+        binding.loading.visibility = View.VISIBLE
+    }
+
     private fun getDataDaerah(idkec: String, idkel: String) {
+        load()
         ApiClient.getClient.getDaerah(idkec,idkel).enqueue(object : Callback<ResponseBody>{
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                 if (response.isSuccessful){
+                    show()
                     val jsonO = JSONObject(response.body()!!.string())
                     if (jsonO.getString("status") == "200"){
                         val jsonA = jsonO.getJSONArray("DATA")
@@ -66,5 +77,9 @@ class DetailDaerahActivity : AppCompatActivity() {
 
         })
 
+    }
+
+    fun backDetailDaerah(view: View) {
+        finish()
     }
 }
