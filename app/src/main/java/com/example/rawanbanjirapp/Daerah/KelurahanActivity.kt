@@ -61,8 +61,8 @@ class KelurahanActivity : AppCompatActivity() {
                     val jsonO = JSONObject(response.body()!!.string())
                     if (jsonO.getString("status") == "200"){
                         show()
-                        val jsonA = jsonO.getJSONArray("DATA")
 
+                        val jsonA = jsonO.getJSONArray("DATA")
                         databean = ArrayList()
                         val gson = Gson()
 

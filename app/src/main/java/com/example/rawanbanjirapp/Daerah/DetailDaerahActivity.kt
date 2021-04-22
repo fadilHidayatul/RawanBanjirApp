@@ -1,13 +1,21 @@
 package com.example.rawanbanjirapp.Daerah
 
-import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import com.example.rawanbanjirapp.R
 import com.example.rawanbanjirapp.UtilsApi.ApiClient
 import com.example.rawanbanjirapp.databinding.ActivityDetailDaerahBinding
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.model.*
+import es.dmoral.toasty.Toasty
 import okhttp3.ResponseBody
 import org.json.JSONObject
 import retrofit2.Call
@@ -21,7 +29,13 @@ class DetailDaerahActivity : AppCompatActivity() {
     private var idkec : String = ""
     private var idkel : String = ""
 
+    private lateinit var gmaps : GoogleMap
+    private lateinit var cameraPos : CameraPosition
+    private lateinit var center : LatLng
+    private var marker = MarkerOptions()
+    private var circle = CircleOptions()
 
+    private lateinit var pos : LatLng
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +47,10 @@ class DetailDaerahActivity : AppCompatActivity() {
         idkec = intent.getStringExtra("idkec")!!
         idkel = intent.getStringExtra("idkel")!!
 
-        getDataDaerah(idkec,idkel)
+        binding.mapView.onCreate(savedInstanceState)
+        binding.mapView.onResume()
+        AsyncMapView()
+
     }
 
     private fun show(){
@@ -45,7 +62,15 @@ class DetailDaerahActivity : AppCompatActivity() {
         binding.loading.visibility = View.VISIBLE
     }
 
-    private fun getDataDaerah(idkec: String, idkel: String) {
+    private fun AsyncMapView() {
+        binding.mapView.getMapAsync(object :OnMapReadyCallback{
+            override fun onMapReady(googlemap: GoogleMap?) {
+                getDataDaerah(idkec,idkel,googlemap)
+            }
+
+        })
+    }
+    private fun getDataDaerah(idkec: String, idkel: String, googlemap: GoogleMap?) {
         load()
         ApiClient.getClient.getDaerah(idkec,idkel).enqueue(object : Callback<ResponseBody>{
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
@@ -56,12 +81,25 @@ class DetailDaerahActivity : AppCompatActivity() {
                         val jsonA = jsonO.getJSONArray("DATA")
                         val data = jsonA.getJSONObject(0)
 
+                        //text
                         val kecamatan = data.getString("nama_kecamatan")
                         val kelurahan = data.getString("nama_kelurahan")
                         val range = data.getString("luas")
+                        val kode = data.getString("kode_bahaya")
+                        val risk = data.getString("tingkat_bahaya")
 
                         binding.keckel.text = "Kecamatan $kecamatan, Kelurahan $kelurahan"
-                        binding.range.text = "Radius $range m"
+                        binding.range.text = "Radius bahaya $range m"
+                        binding.risk.text = "Tingkat bahaya $risk"
+
+                        //map
+                        pos = LatLng(data.getString("lat").toDouble(),data.getString("lgt").toDouble())
+                        gmaps = googlemap!!
+                        cameraPos = CameraPosition.Builder().target(pos).zoom(17F).build()
+                        googlemap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPos))
+
+                        //marker
+                        setMarker(pos,kode)
 
                     }else{
                         Toast.makeText(context,"${jsonO.getString("message")}", Toast.LENGTH_SHORT).show()
@@ -74,12 +112,39 @@ class DetailDaerahActivity : AppCompatActivity() {
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                 Toast.makeText(context,"Cek Koneksi Internet", Toast.LENGTH_SHORT).show()
             }
-
         })
 
     }
 
+    private fun setMarker(pos: LatLng, kode: String) {
+        var bitmap : Bitmap = BitmapFactory.decodeResource(resources, R.drawable.lottie_loading)
+        var b : Bitmap = Bitmap.createScaledBitmap(bitmap,100,100,true)
+
+        marker.position(pos)
+        marker.title("test")
+//        marker.icon(BitmapDescriptorFactory.fromBitmap(b))
+
+//        circle.center(pos)
+//        circle.radius(10.0)
+//        circle.strokeColor(Color.RED)
+//        circle.strokeWidth(0.5F)
+//        circle.fillColor(Color.BLUE)
+
+        gmaps.addMarker(marker)
+        gmaps.setOnMarkerClickListener(object : GoogleMap.OnMarkerClickListener{
+            override fun onMarkerClick(p0: Marker?): Boolean {
+                Toasty.success(context, "$kode", Toast.LENGTH_SHORT,false).show()
+                return true
+            }
+        })
+
+    }
     fun backDetailDaerah(view: View) {
         finish()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        binding.mapView.onStop()
     }
 }

@@ -11,6 +11,7 @@ import com.example.rawanbanjirapp.Daerah.Model.Kecamatan
 import com.example.rawanbanjirapp.UtilsApi.ApiClient
 import com.example.rawanbanjirapp.databinding.ActivityKecamatanBinding
 import com.google.gson.Gson
+import es.dmoral.toasty.Toasty
 import okhttp3.ResponseBody
 import org.json.JSONObject
 import retrofit2.Call
@@ -53,11 +54,11 @@ class KecamatanActivity : AppCompatActivity() {
         ApiClient.getClient.getKecamatan().enqueue(object : Callback<ResponseBody>{
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                 if (response.isSuccessful){
-                    show()
                     val jsonO = JSONObject(response.body()!!.string())
                     if (jsonO.getString("status") == "200"){
-                        val jsonA = jsonO.getJSONArray("DATA")
+                        show()
 
+                        val jsonA = jsonO.getJSONArray("DATA")
                         val gson = Gson()
                         dataBean = ArrayList()
 
@@ -83,7 +84,7 @@ class KecamatanActivity : AppCompatActivity() {
 
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                 done()
-                Toast.makeText(context,"Cek Koneksi Internet", Toast.LENGTH_SHORT).show()
+                Toasty.error(context, "Cek Koneksi Internet", Toast.LENGTH_SHORT).show();
             }
 
         })
