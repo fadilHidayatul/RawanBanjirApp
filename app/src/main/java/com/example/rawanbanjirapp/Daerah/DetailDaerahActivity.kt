@@ -90,7 +90,7 @@ class DetailDaerahActivity : AppCompatActivity() {
 
                         binding.keckel.text = "Kecamatan $kecamatan, Kelurahan $kelurahan"
                         binding.range.text = "Radius bahaya $range m"
-                        binding.risk.text = "Tingkat bahaya $risk"
+                        binding.risk.text = risk
 
                         //map
                         pos = LatLng(data.getString("lat").toDouble(),data.getString("lgt").toDouble())

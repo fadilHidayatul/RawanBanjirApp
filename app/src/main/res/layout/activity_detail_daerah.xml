@@ -127,18 +127,28 @@
                 <ImageView
                     android:id="@+id/img3"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_range"
+                    android:src="@drawable/ic_risk"
                     android:layout_marginEnd="16dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
                 <TextView
-                    android:id="@+id/risk"
+                    android:id="@+id/txt"
                     android:layout_toRightOf="@id/img3"
                     android:layout_centerVertical="true"
                     android:fontFamily="@font/nunito"
-                    android:text="-"
+                    android:text="Tingkat Bahaya "
                     android:textSize="15sp"
                     android:textColor="@color/black1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/risk"
+                    android:layout_toRightOf="@id/txt"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/nunito_bold"
+                    android:text="-"
+                    android:textSize="15sp"
+                    android:textColor="@color/pink"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
             </RelativeLayout>

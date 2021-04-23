@@ -21,4 +21,8 @@ interface ApiInterface {
         @Field("id_kecamatan") id_kecamatan: String,
         @Field("id_kelurahan") id_kelurahan : String
     ) : Call<ResponseBody>
+
+    @GET("informasi/get_informasi.php")
+    fun getInformasi(
+    ) : Call<ResponseBody>
 }
