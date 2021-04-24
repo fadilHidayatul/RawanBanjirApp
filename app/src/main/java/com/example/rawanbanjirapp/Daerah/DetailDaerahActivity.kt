@@ -1,6 +1,7 @@
 package com.example.rawanbanjirapp.Daerah
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Color
@@ -8,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import com.example.rawanbanjirapp.Informasi.DetailInformasiActivity
 import com.example.rawanbanjirapp.R
 import com.example.rawanbanjirapp.UtilsApi.ApiClient
 import com.example.rawanbanjirapp.databinding.ActivityDetailDaerahBinding
@@ -146,5 +148,9 @@ class DetailDaerahActivity : AppCompatActivity() {
     override fun onStop() {
         super.onStop()
         binding.mapView.onStop()
+    }
+
+    fun detailInformasi(view: View) {
+        startActivity(Intent(this,DetailInformasiActivity::class.java))
     }
 }

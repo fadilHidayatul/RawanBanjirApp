@@ -9,6 +9,7 @@ import android.widget.Toast
 import com.example.rawanbanjirapp.About.AboutActivity
 import com.example.rawanbanjirapp.Bantuan.BantuanActivity
 import com.example.rawanbanjirapp.Daerah.KecamatanActivity
+import com.example.rawanbanjirapp.Informasi.DetailInformasiActivity
 import com.example.rawanbanjirapp.Informasi.InformasiActivity
 import com.example.rawanbanjirapp.databinding.ActivityMainBinding
 
@@ -26,7 +27,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, KecamatanActivity::class.java))
         }
         binding.menu2.setOnClickListener {
-            Toast.makeText(this,"Peta",Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, DetailInformasiActivity::class.java))
         }
         binding.menu3.setOnClickListener {
             startActivity(Intent(this, InformasiActivity::class.java))

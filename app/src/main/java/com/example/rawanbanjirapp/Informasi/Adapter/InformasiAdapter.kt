@@ -39,6 +39,7 @@ class InformasiAdapter(context: Context, dataBean: List<Informasi.DATABean>) : R
 
         holder.binding.cardInformasi.setOnClickListener{
             var intent = Intent(mContext,DetailInformasiActivity::class.java)
+            intent.putExtra("chk", true)
             intent.putExtra("judul", data.judul)
             intent.putExtra("isi", data.isi)
             intent.putExtra("foto", data.foto)
