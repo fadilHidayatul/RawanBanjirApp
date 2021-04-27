@@ -54,7 +54,7 @@
             app:cardCornerRadius="12dp"
             android:translationZ="-3dp"
             android:layout_width="match_parent"
-            android:layout_height="175dp" />
+            android:layout_height="195dp" />
         <LinearLayout
             android:weightSum="5"
             android:layout_alignParentBottom="true"
@@ -62,7 +62,7 @@
             android:layout_marginBottom="24dp"
             android:paddingVertical="8dp"
             android:layout_width="match_parent"
-            android:layout_height="175dp"
+            android:layout_height="195dp"
             android:orientation="vertical">
             <TextView
                 android:alpha="1"
@@ -154,7 +154,7 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:visibility="gone"
+                android:visibility="visible"
                 android:layout_weight="1.5"
                 android:onClick="detailInformasi"
                 android:layout_gravity="center_vertical"

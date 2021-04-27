@@ -151,6 +151,8 @@ class DetailDaerahActivity : AppCompatActivity() {
     }
 
     fun detailInformasi(view: View) {
-        startActivity(Intent(this,DetailInformasiActivity::class.java))
+        var intent = Intent(this,DetailInformasiActivity::class.java)
+        intent.putExtra("idkelurahan",idkel)
+        startActivity(intent)
     }
 }

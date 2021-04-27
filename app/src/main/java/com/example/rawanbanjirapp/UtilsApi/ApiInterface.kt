@@ -25,4 +25,10 @@ interface ApiInterface {
     @GET("informasi/get_informasi.php")
     fun getInformasi(
     ) : Call<ResponseBody>
+
+    @FormUrlEncoded
+    @POST("informasi/get_informasi_from_map.php")
+    fun getInformasiFromMap(
+        @Field("id_kelurahan") id_kelurahan: String
+    ) : Call<ResponseBody>
 }

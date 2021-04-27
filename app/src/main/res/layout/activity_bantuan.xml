@@ -51,7 +51,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerBantuan"
             tools:listitem="@layout/row_bantuan"
-            android:layout_marginHorizontal="24dp"
+            android:paddingHorizontal="24dp"
             android:layout_marginTop="12dp"
             android:paddingBottom="10dp"
             android:layout_width="match_parent"
