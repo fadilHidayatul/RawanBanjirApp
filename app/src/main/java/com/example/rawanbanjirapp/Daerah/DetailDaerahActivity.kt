@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -101,7 +100,7 @@ class DetailDaerahActivity : AppCompatActivity() {
                         googlemap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPos))
 
                         //marker
-                        setMarker(pos,kode)
+                        setMarker(pos,kode,range,kelurahan)
 
                     }else{
                         Toast.makeText(context,"${jsonO.getString("message")}", Toast.LENGTH_SHORT).show()
@@ -118,7 +117,7 @@ class DetailDaerahActivity : AppCompatActivity() {
 
     }
 
-    private fun setMarker(pos: LatLng, kode: String) {
+    private fun setMarker(pos: LatLng, kode: String, range: String, kelurahan: String) {
         var bitmap : Bitmap = BitmapFactory.decodeResource(resources, R.drawable.lottie_loading)
         var b : Bitmap = Bitmap.createScaledBitmap(bitmap,100,100,true)
 
@@ -126,16 +125,17 @@ class DetailDaerahActivity : AppCompatActivity() {
         marker.title("test")
 //        marker.icon(BitmapDescriptorFactory.fromBitmap(b))
 
-//        circle.center(pos)
-//        circle.radius(10.0)
-//        circle.strokeColor(Color.RED)
-//        circle.strokeWidth(0.5F)
-//        circle.fillColor(Color.BLUE)
+        circle.center(pos)
+        circle.radius(range.toDouble())
+        circle.strokeColor(R.color.blue)
+        circle.strokeWidth(0.5F)
+        circle.fillColor(R.color.dark_blue)
 
         gmaps.addMarker(marker)
+        gmaps.addCircle(circle)
         gmaps.setOnMarkerClickListener(object : GoogleMap.OnMarkerClickListener{
             override fun onMarkerClick(p0: Marker?): Boolean {
-                Toasty.success(context, "$kode", Toast.LENGTH_SHORT,false).show()
+                Toasty.success(context, "$kelurahan", Toast.LENGTH_SHORT,false).show()
                 return true
             }
         })

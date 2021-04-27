@@ -11,6 +11,7 @@ import com.example.rawanbanjirapp.Bantuan.BantuanActivity
 import com.example.rawanbanjirapp.Daerah.KecamatanActivity
 import com.example.rawanbanjirapp.Informasi.DetailInformasiActivity
 import com.example.rawanbanjirapp.Informasi.InformasiActivity
+import com.example.rawanbanjirapp.Peta.PetaActivity
 import com.example.rawanbanjirapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -27,7 +28,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, KecamatanActivity::class.java))
         }
         binding.menu2.setOnClickListener {
-            startActivity(Intent(this, DetailInformasiActivity::class.java))
+            startActivity(Intent(this, PetaActivity::class.java))
         }
         binding.menu3.setOnClickListener {
             startActivity(Intent(this, InformasiActivity::class.java))
