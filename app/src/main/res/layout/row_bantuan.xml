@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="8dp"
+    android:background="@drawable/ic_bantuan"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="200dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/txtBantuan"
+            android:text="@string/lorem"
+            android:fontFamily="@font/nunito"
+            android:textColor="@color/black1"
+            android:textSize="16sp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/l_no"/>
+
+        <LinearLayout
+            android:id="@+id/l_no"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="-5dp"
+            android:layout_marginBottom="-5dp"
+            android:background="@drawable/ic_bantuan2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/no"
+                android:text="1"
+                android:gravity="center"
+                android:fontFamily="@font/nunito_bold"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

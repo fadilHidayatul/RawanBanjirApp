@@ -6,5 +6,10 @@
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Cursus turpis massa tincidunt dui ut ornare. Enim praesent elementum facilisis leo vel. Id aliquet lectus proin nibh nisl condimentum id venenatis. Ut eu sem integer vitae. Elementum nisi quis eleifend quam. Eu turpis egestas pretium aenean pharetra magna ac placerat vestibulum. Suspendisse interdum consectetur libero id faucibus nisl tincidunt.
     </string>
 
-    <string name="map_id">b9e66e3caeb0e428</string>
+    <string name="cp1"></string>
+    <string name="cp2"></string>
+    <string name="cp3"></string>
+    <string name="cp4"></string>
+    <string name="cp5"> </string>
+    <string name="cp6"></string>
 </resources>
