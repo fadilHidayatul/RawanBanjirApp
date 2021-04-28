@@ -22,7 +22,7 @@
             android:layout_centerVertical="true"
             android:layout_height="match_parent"/>
         <TextView
-            android:text="Daerah Rawan Menu"
+            android:text="Peta Banjir"
             android:gravity="center_vertical"
             android:fontFamily="@font/nunito_bold"
             android:textColor="@color/blue"
