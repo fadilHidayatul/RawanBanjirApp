@@ -31,4 +31,7 @@ interface ApiInterface {
     fun getInformasiFromMap(
         @Field("id_kelurahan") id_kelurahan: String
     ) : Call<ResponseBody>
+
+    @GET("daerah/get_all_map.php")
+    fun getAllMapData() : Call<ResponseBody>
 }

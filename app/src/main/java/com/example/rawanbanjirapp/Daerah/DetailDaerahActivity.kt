@@ -4,10 +4,12 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import com.example.rawanbanjirapp.Informasi.DetailInformasiActivity
 import com.example.rawanbanjirapp.R
 import com.example.rawanbanjirapp.UtilsApi.ApiClient
@@ -118,18 +120,18 @@ class DetailDaerahActivity : AppCompatActivity() {
     }
 
     private fun setMarker(pos: LatLng, kode: String, range: String, kelurahan: String) {
-        var bitmap : Bitmap = BitmapFactory.decodeResource(resources, R.drawable.lottie_loading)
-        var b : Bitmap = Bitmap.createScaledBitmap(bitmap,100,100,true)
+        var bitmap : Bitmap = BitmapFactory.decodeResource(resources, R.drawable.marker_daerah)
+        var b : Bitmap = Bitmap.createScaledBitmap(bitmap,80,120,true)
 
         marker.position(pos)
         marker.title("test")
-//        marker.icon(BitmapDescriptorFactory.fromBitmap(b))
+        marker.icon(BitmapDescriptorFactory.fromBitmap(b))
 
         circle.center(pos)
         circle.radius(range.toDouble())
         circle.strokeColor(R.color.blue)
-        circle.strokeWidth(0.5F)
-        circle.fillColor(R.color.dark_blue)
+        circle.strokeWidth(1F)
+        circle.fillColor(ContextCompat.getColor(context,R.color.radius))
 
         gmaps.addMarker(marker)
         gmaps.addCircle(circle)
