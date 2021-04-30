@@ -41,10 +41,10 @@ class PetaActivity : AppCompatActivity() {
 
         binding.mapView.onCreate(savedInstanceState)
         binding.mapView.onResume()
-        AsyncMapView()
+        asyncMapView()
     }
 
-    private fun AsyncMapView() {
+    private fun asyncMapView() {
         binding.mapView.getMapAsync(object : OnMapReadyCallback{
             override fun onMapReady(googlemap: GoogleMap?) {
                 getAllMapData(googlemap)
@@ -54,11 +54,13 @@ class PetaActivity : AppCompatActivity() {
     }
 
     private fun getAllMapData(googlemap: GoogleMap?) {
+        load()
         ApiClient.getClient.getAllMapData().enqueue(object : Callback<ResponseBody>{
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                 if (response.isSuccessful){
                     val jsonO = JSONObject(response.body()!!.string())
                     if (jsonO.getString("status") == "200"){
+                        show()
                         val jsonA = jsonO.getJSONArray("DATA")
 
                         //map
@@ -71,21 +73,23 @@ class PetaActivity : AppCompatActivity() {
                         for (i in 0 until jsonA.length()){
                             val data = jsonA.getJSONObject(i)
 
-                            var kelurahan = data.getString("kelurahan")
-                            var bahaya = data.getString("bahaya")
-                            var lati = data.getString("lat")
-                            var longi = data.getString("lgt")
-                            var center = LatLng(lati.toDouble(),longi.toDouble())
+                            val kelurahan = data.getString("kelurahan")
+                            val bahaya = data.getString("bahaya")
+                            val lati = data.getString("lat")
+                            val longi = data.getString("lgt")
+                            val center = LatLng(lati.toDouble(),longi.toDouble())
 
                             setMarkerBanjir(bahaya,center,kelurahan)
                         }
                     }else{
+                        done()
                         Toasty.error(context, "Data tidak ada", Toast.LENGTH_SHORT).show()
                     }
                 }
             }
 
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                done()
                 Toasty.error(context, "Cek Koneksi Internet", Toast.LENGTH_SHORT).show()
             }
 
@@ -95,19 +99,42 @@ class PetaActivity : AppCompatActivity() {
     }
 
     private fun setMarkerBanjir(bahaya: String, center: LatLng, kelurahan: String) {
-        var bitmap : Bitmap = BitmapFactory.decodeResource(resources, R.drawable.marker_red)
-        var b : Bitmap = Bitmap.createScaledBitmap(bitmap,50,80,true)
+        val bitmap : Bitmap = BitmapFactory.decodeResource(resources, R.drawable.marker_red)
+        val tinggi : Bitmap = Bitmap.createScaledBitmap(bitmap,45,90,true)
+
+        val bitmap2 : Bitmap = BitmapFactory.decodeResource(resources,R.drawable.marker_yellow)
+        val sedang : Bitmap = Bitmap.createScaledBitmap(bitmap2,45,90,true)
+
+        val bitmap3 : Bitmap = BitmapFactory.decodeResource(resources,R.drawable.marker_blue)
+        val rendah : Bitmap = Bitmap.createScaledBitmap(bitmap3,45,90,true)
 
         marker.position(center)
         marker.title(kelurahan)
-        marker.icon(BitmapDescriptorFactory.fromBitmap(b))
+        if (bahaya == "Tinggi"){
+            marker.icon(BitmapDescriptorFactory.fromBitmap(tinggi))
+        }else if (bahaya == "Sedang"){
+            marker.icon(BitmapDescriptorFactory.fromBitmap(sedang))
+        }else{
+            marker.icon(BitmapDescriptorFactory.fromBitmap(rendah))
+        }
 
         gmaps.addMarker(marker)
     }
 
+    private fun show(){
+        binding.layoutIsi.visibility = View.VISIBLE
+        binding.loading.visibility = View.GONE
+    }
+    private fun load(){
+        binding.layoutIsi.visibility = View.GONE
+        binding.loading.visibility = View.VISIBLE
+    }
+    private fun done(){
+        binding.layoutIsi.visibility = View.GONE
+        binding.loading.visibility = View.GONE
+    }
+
     fun backPeta(view: View) {
         finish()
-
-
     }
 }

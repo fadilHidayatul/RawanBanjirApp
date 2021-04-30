@@ -19,7 +19,7 @@ class DetailInformasiActivity : AppCompatActivity() {
     private lateinit var binding : ActivityDetailInformasiBinding
     private lateinit var context : Context
 
-    var chkIntent : Boolean = false
+    private var chkIntent : Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,13 +27,13 @@ class DetailInformasiActivity : AppCompatActivity() {
         setContentView(binding.root)
         context = this
 
-        var intent = intent
+        val intent = intent
         chkIntent = intent.getBooleanExtra("chk",false)
-        var judul = intent.getStringExtra("judul")
-        var isi = intent.getStringExtra("isi")
-        var foto = intent.getStringExtra("foto")
+        val judul = intent.getStringExtra("judul")
+        val isi = intent.getStringExtra("isi")
+        val foto = intent.getStringExtra("foto")
 
-        var idkelurahan = intent.getStringExtra("idkelurahan")
+        val idkelurahan = intent.getStringExtra("idkelurahan")
 
 //        Toasty.error(context, "$judul dan $foto", Toast.LENGTH_SHORT).show()
 
@@ -48,14 +48,17 @@ class DetailInformasiActivity : AppCompatActivity() {
     private fun show(){
         binding.lInformasiIsi.visibility = View.VISIBLE
         binding.loading.visibility = View.GONE
+        binding.lNotFound.visibility = View.GONE
     }
     private fun load(){
         binding.lInformasiIsi.visibility = View.GONE
         binding.loading.visibility = View.VISIBLE
+        binding.lNotFound.visibility = View.GONE
     }
     private fun done(){
         binding.lInformasiIsi.visibility = View.GONE
         binding.loading.visibility = View.GONE
+        binding.lNotFound.visibility = View.VISIBLE
     }
 
     private fun getInformasiFromMap(idkelurahan: String?) {
@@ -77,17 +80,17 @@ class DetailInformasiActivity : AppCompatActivity() {
                             .into(binding.imgInformasiDetail)
                     }else{
                         done()
-                        Toasty.error(context, "Data tidak ada", Toast.LENGTH_SHORT).show()
+                        binding.txtNotFound.text = "Data Tidak Ada!!"
                     }
                 }else{
                     done()
-                    Toasty.error(context, "Error Response", Toast.LENGTH_SHORT).show()
+                    binding.txtNotFound.text = "Error Response"
                 }
             }
 
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                 done()
-                Toasty.error(context, "Koneksi Internet", Toast.LENGTH_SHORT).show()
+                binding.txtNotFound.text = "Koneksi Internet"
             }
 
         })
@@ -105,5 +108,9 @@ class DetailInformasiActivity : AppCompatActivity() {
 
     fun isIntentIn() : Boolean {
         return chkIntent
+    }
+
+    fun backMap(view: View) {
+        finish()
     }
 }

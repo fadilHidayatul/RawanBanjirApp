@@ -4,15 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".Peta.PetaActivity">
 
     <RelativeLayout
-        android:background="@drawable/back_bar"
-        android:translationZ="1dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginHorizontal="22dp"
         android:layout_width="match_parent"
-        android:layout_height="?actionBarSize">
+        android:layout_height="?actionBarSize"
+        android:layout_marginHorizontal="22dp"
+        android:layout_marginTop="9dp"
+        android:background="@drawable/back_bar"
+        android:translationZ="2dp">
         <ImageView
             android:id="@+id/back_about"
             android:src="@drawable/ic_back"
@@ -36,17 +37,26 @@
 
     <RelativeLayout
         android:id="@+id/layout_isi"
-        android:visibility="visible"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:visibility="visible">
         <com.google.android.gms.maps.MapView
-            android:translationZ="-1dp"
-            android:layout_marginBottom="-25dp"
             android:id="@+id/mapView"
-            android:gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:layout_marginBottom="-25dp"
+            android:gravity="center"
+            android:translationZ="-1dp" />
 
     </RelativeLayout>
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/loading"
+        android:visibility="gone"
+        android:layout_margin="30dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/lottie_loading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 </RelativeLayout>
