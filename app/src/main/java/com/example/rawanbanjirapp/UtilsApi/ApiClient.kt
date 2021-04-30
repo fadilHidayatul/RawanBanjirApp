@@ -10,8 +10,8 @@ object ApiClient {
 //    var BASE_URL : String = "http://192.168.100.35/banjirapp/"
 //    var image : String = "http://192.168.100.35/banjirapp/foto/"
 
-    var BASE_URL : String = "http://www.citragroup-hrd.com/evakuasi/banjirapp/"
-    var image : String = "http://www.citragroup-hrd.com/evakuasi/banjirapp/foto/"
+    var BASE_URL : String = "http://banjir.citragroup-hrd.com/public/api/"
+    var image : String = "http://banjir.citragroup-hrd.com/public/assets/images/informasi/"
 
     val getClient : ApiInterface
         get() {
